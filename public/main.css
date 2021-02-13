@@ -1,0 +1,19 @@
+.file-form {
+    background-color: #f5ede7;
+    border: 2px solid #349c90;
+    border-radius: 25px;
+    padding: 35px;
+}
+.pull-right {
+    text-align: end;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #2a7d73;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #45d2c1;
+}
