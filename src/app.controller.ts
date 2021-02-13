@@ -8,6 +8,6 @@ export class AppController {
   @Get()
   @Render('index')
   getHello(): any {
-    return  { message: 'Hell world'}; // this.appService.getHello(); // ResponseBuilder(null, null, null);
+    return  { is_done: false};
   }
 }
