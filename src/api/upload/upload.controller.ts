@@ -3,10 +3,14 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { editFilename, textFileFilter } from './utils';
 import { ResponseBuilder } from '../../shared/response-builder';
+import { UploadService } from './upload.service';
 
 
 @Controller('api')
 export class UploadController {
+
+  constructor(private readonly uploadService: UploadService) {}
+
   @Post('upload')
   @UseInterceptors(FileInterceptor('file', {
     dest: './files/',
@@ -14,7 +18,9 @@ export class UploadController {
     storage: diskStorage({destination: './files', filename: editFilename})})
   )
   async uploadFile(@UploadedFile('file') file): Promise<any> {
-    // console.log(file);
-    return ResponseBuilder(file, 'OK', null);
+    console.log('this =>');
+    const download_link = this.uploadService.doAllWork(file);
+
+    return ResponseBuilder(download_link, 'OK', null);
   }
 }
