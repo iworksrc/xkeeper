@@ -2,7 +2,7 @@ import { Controller, Post, UploadedFile, UseInterceptors } from '@nestjs/common'
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { editFilename, textFileFilter } from './utils';
-import { ResponseBuilder } from '../../shared/response-builder';
+import { ResponseBuilder } from '../../shared/utils/response-builder';
 import { UploadService } from './upload.service';
 
 
