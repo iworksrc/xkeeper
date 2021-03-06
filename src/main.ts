@@ -2,11 +2,14 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { join } from 'path';
 import { NestExpressApplication } from '@nestjs/platform-express';
+import { OverflowInterceptor } from './shared/http-interceptors/overflow.interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     logger: console
   });
+
+  app.useGlobalInterceptors(new OverflowInterceptor());
 
   app.enableCors({
     allowedHeaders:"*",
